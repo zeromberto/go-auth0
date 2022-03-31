@@ -177,6 +177,9 @@ func TestLogStreamSink(t *testing.T) {
 				Authorization: auth0.String("Bearer f2368bbe77074527a37be2fdd5b92bad"),
 				ContentFormat: auth0.String("JSONLINES"),
 				ContentType:   auth0.String("application/json"),
+				CustomHeaders: []*LogStreamSinkHTTPCustomHeaders{{
+					Header: auth0.String("foo"),
+					Value:  auth0.String("bar")}},
 			},
 		}
 
@@ -198,6 +201,8 @@ func TestLogStreamSink(t *testing.T) {
 		expect.Expect(t, s.GetAuthorization(), "Bearer f2368bbe77074527a37be2fdd5b92bad")
 		expect.Expect(t, s.GetContentFormat(), "JSONLINES")
 		expect.Expect(t, s.GetContentType(), "application/json")
+		expect.Expect(t, s.CustomHeaders[0].GetHeader(), "foo")
+		expect.Expect(t, s.CustomHeaders[0].GetValue(), "bar")
 
 		t.Logf("%s\n", l)
 	})

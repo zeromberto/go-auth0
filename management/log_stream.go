@@ -140,7 +140,14 @@ type LogStreamSinkHTTP struct {
 	// HTTP Authorization
 	Authorization *string `json:"httpAuthorization,omitempty"`
 	// Custom HTTP headers
-	CustomHeaders []interface{} `json:"httpCustomHeaders,omitempty"`
+	CustomHeaders []*LogStreamSinkHTTPCustomHeaders `json:"httpCustomHeaders,omitempty"`
+}
+
+type LogStreamSinkHTTPCustomHeaders struct {
+	// The custom header key
+	Header *string `json:"header,omitempty"`
+	// The custom header value
+	Value *string `json:"value,omitempty"`
 }
 
 // LogStreamSinkDatadog is used to export logs to Datadog.

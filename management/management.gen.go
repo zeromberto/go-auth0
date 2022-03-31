@@ -4392,6 +4392,27 @@ func (l *LogStreamSinkHTTP) String() string {
 	return Stringify(l)
 }
 
+// GetHeader returns the Header field if it's non-nil, zero value otherwise.
+func (l *LogStreamSinkHTTPCustomHeaders) GetHeader() string {
+	if l == nil || l.Header == nil {
+		return ""
+	}
+	return *l.Header
+}
+
+// GetValue returns the Value field if it's non-nil, zero value otherwise.
+func (l *LogStreamSinkHTTPCustomHeaders) GetValue() string {
+	if l == nil || l.Value == nil {
+		return ""
+	}
+	return *l.Value
+}
+
+// String returns a string representation of LogStreamSinkHTTPCustomHeaders.
+func (l *LogStreamSinkHTTPCustomHeaders) String() string {
+	return Stringify(l)
+}
+
 // GetDomain returns the Domain field if it's non-nil, zero value otherwise.
 func (l *LogStreamSinkSplunk) GetDomain() string {
 	if l == nil || l.Domain == nil {
